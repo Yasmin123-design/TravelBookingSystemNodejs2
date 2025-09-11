@@ -1,6 +1,8 @@
+require("dotenv").config();
 const { MongoClient } = require("mongodb");
 
-const url = "mongodb://127.0.0.1:27017"; 
+const url = process.env.MONGO_URI; 
+
 const dbName = "TravelBookingSystemNodeJS";
 const client = new MongoClient(url);
 

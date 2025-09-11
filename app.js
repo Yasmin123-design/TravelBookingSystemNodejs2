@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+require("./Config/passport"); 
 const express = require("express");
 const passport = require("passport");
 const userRoutes = require("./Routers/UserRouter");
@@ -9,7 +9,6 @@ const paymentRoutes = require("./Routers/PaymentRouter");
 const wishlistRoutes = require("./Routers/WishlistRouter");
 const reviewRoutes = require("./Routers/ReviewRouter")
 const app = express();
-require("./Config/passport"); 
 
 const PORT = process.env.PORT || 3000;
 
