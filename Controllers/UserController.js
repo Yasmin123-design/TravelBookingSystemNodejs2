@@ -49,7 +49,7 @@ module.exports = {
             const JWT_SECRET = process.env.JWT_SECRET;
             
             const token = jwt.sign(
-                { id: enteredUser._id,
+                { _id: enteredUser._id,
                 email: enteredUser.email,
                 role:enteredUser.role
                 },
