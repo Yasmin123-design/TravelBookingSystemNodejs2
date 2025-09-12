@@ -39,7 +39,7 @@ async function updateFlight(id, data) {
 async function deleteFlight(id) {
     const db = await connectDB();
 
-    const flight = await flightModel.findFlightById(id);
+    const flight = await findFlightById(id);
 
     if (!flight) 
     {
