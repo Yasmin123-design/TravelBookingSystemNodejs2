@@ -127,7 +127,9 @@ module.exports = {
         { expiresIn: "15m" }
     );
 
-    const resetLink = `http://localhost:3000/reset-password?token=${token}`;
+    // const resetLink = `http://localhost:3000/reset-password?token=${token}`;
+
+    const resetLink = `${process.env.BASE_URL}/reset-password?token=${token}`;
 
     await sendEmail(
     email, 
