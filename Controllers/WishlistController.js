@@ -6,10 +6,10 @@ module.exports = {
 async  add(req, res) {
     try {
     const userId = req.user._id; 
-    const { flightId } = req.body;
-    if (!flightId) return res.status(400).json({ error: "flightId required" });
+    const { wishlistId } = req.body;
+    if (!wishlistId) return res.status(400).json({ error: "flightId required" });
 
-    const result = await wishlistModel.addToWishlist(userId, flightId);
+    const result = await wishlistModel.addToWishlist(userId, wishlistId);
     return res.json({ message: "Added to wishlist", item: result });
     } catch (err) {
     return res.status(500).json({ error: err.message });

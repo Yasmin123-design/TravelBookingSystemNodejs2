@@ -1,5 +1,6 @@
 const connectDB = require("../Config/db.js");
 const flightModel = require("../Models/FlightModel");
+const { ObjectId } = require("mongodb");
 
 async function addToWishlist(userId, flightId) {
     const db = await connectDB();
@@ -25,16 +26,11 @@ async function addToWishlist(userId, flightId) {
     return res;
 }
 
-async function removeFromWishlist(userId, flightId) {
+async function removeFromWishlist(userId, wishlistId) {
     const db = await connectDB();
-    const flight = await flightModel.findFlightById(flightId);
 
-    if (!flight) 
-    {
-        throw new Error("الرحلة غير موجودة");
-    }
     const wishlists = await db.collection("wishlists")
-    .find({ userId: userId, flightId: flightId })
+    .find({_id:new ObjectId(wishlistId)})
     .toArray();
 
 if (wishlists.length === 0) {
@@ -43,7 +39,7 @@ if (wishlists.length === 0) {
 
     return db.collection("wishlists").deleteOne({
     userId: userId,
-    flightId: flightId
+    _id: new ObjectId(wishlistId)
     });
 }
 async function getUserWishlist(userId) {
