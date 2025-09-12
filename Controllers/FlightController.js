@@ -53,7 +53,7 @@ async searchFlightsByFromTo(req, res) {
     try {
     const { from, to } = req.query;
 
-    const flights = await FlightModel.searchFlights({ from, to});
+    const flights = await FlightModel.searchFlightsByFromTo({ from, to});
 
     if (!flights || flights.length === 0) {
         return res.status(404).json({ message: "No flights found" });
