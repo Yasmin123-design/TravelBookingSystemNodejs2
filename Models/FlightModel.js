@@ -23,7 +23,7 @@ async function findFlightById(id) {
 
 async function updateFlight(id, data) {
     const db = await connectDB();
-    const flight = await db.collection("flights").findOne({ _id: new ObjectId(booking.flightId) });
+    const flight = await db.collection("flights").findOne({ _id: new ObjectId(id) });
     if (!flight) {
     throw new Error("Flight not found"); 
     }
